@@ -1,0 +1,21 @@
+\chapter{Conclusions and Future Work}
+
+\section{Conclusions}
+In this thesis, I studied the counting problem in computer vision using the density estimation proposed in \cite{Lempitsky:Zisserman:Destimate}, and built application in practical. The main contributions of this thesis are listed as below:\\
+\begin{enumerate}
+    \item Reimplement the existing the learning function in C++ language. It has good result by estimation number of object almost correctly.
+    \item Create application that has features for support client: 
+    \begin{itemize}
+        \item Marker: create training set for multi-kinds for object.  
+        \item Trainer: train model for multi-kinds with training set from Marker. It has been integrated learning method proposed by Lempitsky V, Zisserman A \cite{Lempitsky:Zisserman:Destimate} for training state. 
+        \item Runner: estimate number of object for each types of object with models trained by Train.
+    \end{itemize}
+\end{enumerate}
+
+\section{Future Work} 
+In future, the application will be improved by: 
+\begin{itemize}
+    \item Adding a tool that supports client create dictionary
+    \item Reduce the training and estimation time
+    \item Add a feature that allows client can set region of interest to images in training and estimating state.
+\end{itemize}

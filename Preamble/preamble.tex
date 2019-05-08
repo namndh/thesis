@@ -1,0 +1,197 @@
+\documentclass[12pt,a4paper,oneside,openright]{book}
+\newcommand*{\PreamblePath}{./Preamble}
+
+\usepackage[a4paper,top=25mm,right=20mm,bottom=25mm,left=35mm]{geometry}
+
+\usepackage{amsmath,amssymb, amsthm, pgfplots} % Math packages
+
+\usepackage{amsmath}
+\DeclareMathOperator*{\argmin}{arg\,min}
+
+% \usepackage[none]{hyphenat} % prevent auto hyphenation
+%% ================== HEADER AND FOOTER ================== %%
+%%														   %%
+%% ======================================================= %%
+\pgfplotsset{compat=1.7}
+\usepackage{fancyhdr} % Used for headers
+\pagestyle{fancy}
+\fancyhf{}
+\fancyhead[L,RO]{\thechapter}
+\fancyhead[R]{\rightmark}
+\fancyfoot[L]{\textit{This thesis is performed by: \thesisAuthor -- \studentID -- \studentClass}}
+\fancyfoot[R]{\thepage}
+
+\fancypagestyle{plain}{%
+	\fancyhead{}%
+	\renewcommand*{\headrule}{}%
+	\fancyfoot[L]{\textit{This thesis is performed by: \thesisAuthor -- \studentID -- \studentClass}}
+	\fancyfoot[R]{\thepage}%
+}
+
+\renewcommand{\headrulewidth}{0.5pt}
+\renewcommand{\footrulewidth}{0.5pt}
+%% ================ End HEADER AND FOOTER ================ %%
+
+% Add 'Chapter ' to table of contents
+\makeatletter
+\newcommand\chapternumberline[1]{%
+   \@chapapp@head\@cftbsnum \numtoName{#1}\@cftasnum~}
+\newcommand\cftchaptername{\chaptername~}
+\makeatother
+
+\usepackage{graphicx}
+
+\usepackage{tabularx}
+\usepackage{booktabs}
+% \usepackage[usenames, dvipsnames]{color}
+\usepackage{wrapfig} % For positioning figure
+
+% For subfigures
+\usepackage{subfigure}
+\usepackage{caption}
+
+\usepackage{times}
+\usepackage{lipsum} % For dummy lorem ipsum texts
+\usepackage{enumitem}
+\usepackage{multirow}
+\usepackage{hyperref}
+
+% For formatting subsubsection
+\usepackage{titlesec}
+\titleformat{\subsubsection}{\normalfont\bfseries\scshape}{\thesection}{1em}{} % Capitalize the subsubsection title
+
+% Vietnamese input
+\usepackage[utf8]{inputenc}
+\usepackage[vietnamese.licr,english]{babel}
+\selectlanguage{english}
+
+%% Appendix
+\usepackage[titletoc]{appendix}% http://ctan.org/pkg/appendices
+
+%% Continuous figure numbering
+\usepackage{chngcntr} 
+\counterwithout{figure}{chapter}
+\counterwithout{table}{chapter}
+%% ===================== LINE-SPACING ==================== %%
+\usepackage{setspace}
+\setstretch{1.2} % Set Base line stretch to 1.2
+
+\usepackage{tikz}
+\usetikzlibrary{calc}
+
+%% Algorithmic package
+
+
+\usepackage{algorithm}
+\usepackage[noend]{algpseudocode}
+\usepackage{algorithmicx}
+
+
+
+%% User-defined commands
+\input{\PreamblePath/commands}
+%% Thesis universal information
+\input{\PreamblePath/info}
+
+%% ================== CHAPTER ================== %%
+% \selectlanguage{english}
+\usepackage[Bjornstrup]{fncychap}
+
+\renewcommand{\DOCH}{%
+  \settowidth{\py}{\CNoV\thechapter}
+%  \addtolength{\py}{-10pt}      % Amount of space by which the
+%                                % number is shifted right
+  \fboxsep=0pt%
+  \colorbox[gray]{.85}{\rule{0pt}{40pt}\parbox[b]{\textwidth}{\hfill}}%
+  \kern-\py\raise20pt%
+  \hbox{\color[gray]{.5}\CNoV\thechapter}\\%
+}
+
+
+%% ================ End CHAPTER ================ %%
+
+%% ================== ENVIRONMENTS ================== %%
+\newenvironment{requirement}
+{
+	\cleardoublepage
+	\thispagestyle{empty}
+	\addcontentsline{toc}{chapter}{Requirements for The Thesis}
+	\vspace{-30pt}
+	% \null
+	\begin{center}
+	\fontsize{14}{16pt}\selectfont
+	\bfseries \MakeUppercase{Requirements for The Thesis}
+	\end{center}
+	\fontsize{12}{14pt}\selectfont
+}
+{\vfill\null}
+
+\newenvironment{acknowledgement}
+{
+	\cleardoublepage
+	\thispagestyle{empty}
+	\addcontentsline{toc}{chapter}{Acknowledgements}
+	\vspace{-30pt}
+	% \null
+	\begin{center}
+	\fontsize{14}{16pt}\selectfont
+	\bfseries \MakeUppercase{Acknowledgements}
+	\end{center}
+	\fontsize{12}{14pt}\selectfont
+}
+{\vfill\null}
+
+\newenvironment{abstract}
+{
+	\cleardoublepage
+	\thispagestyle{empty}
+	\addcontentsline{toc}{chapter}{Abstract of Thesis}
+	\vspace{-30pt}
+	% \null
+	\begin{center}
+	\fontsize{14}{16pt}\selectfont
+	\bfseries \MakeUppercase{Abstract of Thesis}
+	\end{center}
+	\fontsize{12}{14pt}\selectfont
+}
+{\vfill\null}
+
+\newenvironment{vnabstract}
+{
+	\cleardoublepage
+	\thispagestyle{empty}
+	\selectlanguage{vietnamese} %% Must be presented here, or you will not be able
+							 %% to use Vietnamese in some pages in your thesis
+	\addcontentsline{toc}{chapter}{Tóm Tắt Nội Dung Đồ Án Tốt Nghiệp}
+	\vspace{-30pt}
+	% \null
+	\begin{center}
+	\fontsize{14}{16pt}\selectfont
+	\bfseries \MakeUppercase{Tóm Tắt Nội Dung Đồ Án Tốt Nghiệp}
+	\end{center}
+	\selectlanguage{english}
+	\fontsize{12}{14pt}\selectfont
+}
+{\vfill\null}
+
+\newenvironment{acronym}
+{
+	\cleardoublepage
+	\thispagestyle{empty}
+	\addcontentsline{toc}{chapter}{Acronym}
+	\vspace{-30pt}
+	% \null
+	\begin{center}
+	\fontsize{14}{16pt}\selectfont
+	\bfseries \MakeUppercase{Acronym}
+	\end{center}
+	\fontsize{12}{14pt}\selectfont
+}
+{\vfill\null}
+
+%% ================ End ENVIRONMENTS ================ %%
+
+\usepackage[acronym, toc, automake]{glossaries} % should be loaded at the end (or at least after
+% packages: hyperref, babel, inputenc)
+\loadglsentries{\PreamblePath/glossaries}
+
