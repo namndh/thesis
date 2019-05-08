@@ -15,7 +15,7 @@ The Kalman filter is an algorithm allowing accurate inference in a linear dynami
 Diagram of Kalman filter in fig.\ref{fig:kalman_dig} shows the goal of the filter is to take in impefect information sort out the useful parts of interest, and to reduce the uncertainty or noise.\\
 The Kalman filter model assumes that the state of a system that at a time $t$ derived from the prior state at the time $t-1$ defined by the following equation:
 \begin{displaymath}
- \textbf{x}_t = \textbf{F}_t \textbf{x}_{t-1} + \textbf{B}_t \textbf{x}_t + \textbf{w}_t,
+ \textbf{x}_t = \textbf{F}_t \textbf{x}_{t-1} + \textbf{B}_t \textbf{x}_t + \textbf{w}_t,\qquad (1)
 \end{displaymath}
 where
 \begin{itemize}
@@ -28,7 +28,7 @@ where
 \pagebreak
 Measurements of the system is defined as follow:
 \begin{displaymath}
-         \textbf{z}_t = \textbf{H}_t\textbf{x}_t + \textbf{v}_t,
+         \textbf{z}_t = \textbf{H}_t\textbf{x}_t + \textbf{v}_t,\qquad (2)
 \end{displaymath}
 
 where:
@@ -38,10 +38,10 @@ where:
     \item $\textbf{v}_t$ is the vector containing the measurement noise terms for each observation in the measurement vector
 \end{itemize}
 There is no direct observation of the true state $\textbf{x}_t$ of the system, and the Kalman filter provides an algorithm to estimate $\hat{\textbf{x}}_t$ using combination of models the system and noisy measurements. Hence, for now, the terms in interest in the state vector are distributed by Gaussian probability density functions (pdfs) rather than discrete values. Gaussian pdfs come up a co-variance matrix $\textbf{P}_t$ which has the diagonal containing the variances associated with the corresponding terms in the state vector and the remaining containing the co-variance between terms in the state vectors.\\
-In the prediction stage, initial state estimate, $\hat{\textbf{x}}_0$ and $\textbf{P}_0$ are applied recursively at each time step, using a loop then the current state vector is predicted from the state dynamic equation defined as:
+In the prediction state, initial state estimate, $\hat{\textbf{x}}_0$ and $\textbf{P}_0$ are applied recursively at each time step, using a loop then the current state vector is predicted from the state dynamic equation defined as:
 \begin{center}
     $
-        \hat{\textbf{x}}_{k|k-1} = \textbf{F}_{k-1}\hat{\textbf{x}}_{k-1} + \textbf{G}_{k-1}\textbf{u}_{k-1}
+        \hat{\textbf{x}}_{k|k-1} = \textbf{F}_{k-1}\hat{\textbf{x}}_{k-1} + \textbf{G}_{k-1}\textbf{u}_{k-1}, \qquad (3)
     $
 \end{center}
 where:
@@ -54,7 +54,7 @@ where:
 \pagebreak
 Then we predict the state error co-variance matrix by following:
 \begin{displaymath}
-          \textbf{P}_{k|k-1} = \textbf{F}_{k-1}\textbf{P}_{k-1}\textbf{F}^T_{k-1} + \textbf{Q}_{k-1}
+          \textbf{P}_{k|k-1} = \textbf{F}_{k-1}\textbf{P}_{k-1}\textbf{F}^T_{k-1} + \textbf{Q}_{k-1}, \qquad (4)
 \end{displaymath}
 
 where:
@@ -65,7 +65,7 @@ where:
 \end{itemize}
 One the predicted valued are obtained, the Kalman gain matrix, $\textbf{K}_k$ is calculated by the following function:
 \begin{displaymath}
-              \textbf{K}_k = \textbf{P}_{k|k-1} \textbf{H}^T_k(\textbf{H}_k\textbf{P}_{k|k-1} \textbf{H}^T_k + \textbf{R}_k)^{-1}    
+              \textbf{K}_k = \textbf{P}_{k|k-1} \textbf{H}^T_k(\textbf{H}_k\textbf{P}_{k|k-1} \textbf{H}^T_k + \textbf{R}_k)^{-1}, \qquad (5)    
 \end{displaymath}
 
 with $\textbf{R}$ is the measurement noise co-variance.\\
@@ -73,10 +73,22 @@ The measurement update equations:
 \begin{itemize}
     \item The state vector is updated as:
         \begin{displaymath}
-                      \hat{\textbf{x}}_k = \hat{\textbf{x}}_{k|k-1} + \textbf{K}_k(\textbf{z}_k - \textbf{H}_x\hat{\textbf{x}}_{k|k-1})
+                      \hat{\textbf{x}}_k = \hat{\textbf{x}}_{k|k-1} + \textbf{K}_k(\textbf{z}_k - \textbf{H}_x\hat{\textbf{x}}_{k|k-1}), \qquad (6)
         \end{displaymath}
     \item The state error co-variance is updated by
         \begin{displaymath}
-                      \textbf{P}_k = (\textbf{I} -  \textbf{K}_k\textbf{H}_k)\textbf{P}_{k|k-1}
+                      \textbf{P}_k = (\textbf{I} -  \textbf{K}_k\textbf{H}_k)\textbf{P}_{k|k-1}, \qquad (7)
         \end{displaymath}
 \end{itemize}
+\pagebreak
+The workflow of Kalman filter is described in this the figure below:
+\begin{figure}[h!]
+    \centering
+    \includegraphics[scale=0.7]{Chapters/Fig/kal_dig_2.png}
+    \caption{Workflow of Kalman filter}
+    \label{fig:kalman_wf}
+\end{figure}
+\\
+In fig.\ref{fig:kalman_wf}, two states "Predict" and "Correct" of Kalman filter occur continuously with the output of system in the time $t$ is the input of system in the time $t+1$, except the initial time $t_0$. The efficient recursive functions minimize the mean of the squared error in order to provide an optimal status of the model. In several respects, the filter is very powerful: it supports estimates of past, present, and even future states, and it can do so even if the model system's precise nature is unknown.
+\section{Object Detection}
+\subsection{Intersection over Union (IoU)}
