@@ -1,2 +1,15 @@
 \chapter{Theoretical background}
+\section{Tracking}
+Video tracking or object tracking in a images sequence is the process of estimating the trajectory of a moving object or various objects time by time in videos or images sequences recorded by a camera or multiple cameras. Tracking action of object can be done by continuously localizing the object with information about regions, points or features of objects in images.\par
+Video tracking is widely applied in many fields: human-computer interaction, security and surveillance, traffic control. Many tracking methods have been proposed to tackle the tracking problems, namely, Kalman filter, KCF, CSRT...etc. In pedestrian tracking, the trajectories of the pedestrian are almost predicable and and the velocity is not varied to much or more generally, it can be called a dynamic linear model. Due to the predicting performance in the dynamic linear model and the simple implementation. I decided to use filter as the tracker in my project. The following section briefly describes about Kalman filter.
+\subsection{Kalman filter}
+The Kalman filter is an algorithm allowing accurate inference in a linear dynamical system, where the state space of the latent variables is continuous and where all latent and observed variables have a Gaussian distribution.\cite{Kalman} 
+\begin{center}
+    \begin{figure}
+        \centering
+        \includegraphics[width=\textwidth]
+        \caption{Caption}
+        \label{fig:my_label}
+    \end{figure}
+\end{center}
 
