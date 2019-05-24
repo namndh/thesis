@@ -6,6 +6,7 @@
 \usepackage{amsmath,amssymb, amsthm, pgfplots} % Math packages
 
 \usepackage{amsmath}
+\usepackage[bb=boondox]{mathalfa}
 \DeclareMathOperator*{\argmin}{arg\,min}
 
 % \usepackage[none]{hyphenat} % prevent auto hyphenation
@@ -40,7 +41,6 @@
 \makeatother
 
 \usepackage{graphicx}
-
 \usepackage{tabularx}
 \usepackage{booktabs}
 % \usepackage[usenames, dvipsnames]{color}
@@ -85,7 +85,9 @@
 \usepackage{algorithm}
 \usepackage[noend]{algpseudocode}
 \usepackage{algorithmicx}
-
+\algnewcommand\algorithmicinput{\textbf{INPUT:}}
+\algnewcommand\INPUT{\item[\algorithmicinput]}
+\usepackage{listings}
 
 
 %% User-defined commands
