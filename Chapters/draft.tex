@@ -1,0 +1,66 @@
+\begin{equation}
+    \textbf{x}_t = \textbf{F}_t \textbf{x}_{t-1} + \textbf{B}_t \textbf{x}_t + \textbf{w}_t,
+   \end{equation}\par
+   where
+   \begin{itemize}
+       \item $\textbf{x}_t$ is the current state vector containing the parameters of interest of the system (e.g, position, velocity, accelerant..) at time t
+       \item $\textbf{u}_t$ is the vector containing control inputs
+       \item $\textbf{F}_t$ is the state transition matrix which applies the effect of each system state parameters at time $t-1$ on the system state at time $t$
+       \item $\textbf{B}_t$ is the control input which applies the effect of each control input parameter in the control input vector $\textbf{u}_t$ on the state vector
+       \item $\textbf{w}_t$ is the vector containing the process noise terms fro each parameter in the state vector.
+   \end{itemize}
+   
+   \hspace{0.5cm}Measurements of the system is defined as follow:
+   \begin{equation}
+            \textbf{z}_t = \textbf{H}_t\textbf{x}_t + \textbf{v}_t,
+   \end{equation}
+   
+   \hspace{0.5cm}where:
+   \begin{itemize}
+       \item $\textbf{z}_t$ is the vector of measurements
+       \item $\textbf{H}_t$ is the transformation matrix that maps the state vector parameters into the measurement domain
+       \item $\textbf{v}_t$ is the vector containing the measurement noise terms for each observation in the measurement vector
+   \end{itemize}\par
+   There is no direct observation of the true state $\textbf{x}_t$ of the system, and the Kalman filter provides an algorithm to estimate $\hat{\textbf{x}}_t$ using combination of models the system and noisy measurements. Hence, for now, the terms in interest in the state vector are distributed by Gaussian probability density functions (pdfs) rather than discrete values. Gaussian pdfs come up a co-variance matrix $\textbf{P}_t$ which has the diagonal containing the variances associated with the corresponding terms in the state vector and the remaining containing the co-variance between terms in the state vectors.\\
+   In the prediction state, initial state estimate, $\hat{\textbf{x}}_0$ and $\textbf{P}_0$ are applied recursively at each time step, using a loop then the current state vector is predicted from the state dynamic equation defined as:
+   \begin{center}
+       $
+           \hat{\textbf{x}}_{k|k-1} = \textbf{F}_{k-1}\hat{\textbf{x}}_{k-1} + \textbf{G}_{k-1}\textbf{u}_{k-1}, 
+       $
+   \end{center}
+   \hspace{0.5cm}where:
+   \begin{itemize}
+       \item $\hat{\textbf{x}}_{k|k-1}$ is the predicted state vector
+       \item $\hat{\textbf{x}}_{k}$ is the previous estimated state vector
+       \item $\textbf{u}$ is the input vector
+       \item $\textbf{F}$ and $\textbf{G}$ are the matrices defining the system dynamics
+   \end{itemize}
+   
+   \hspace{0.5cm}Then we predict the state error co-variance matrix by following:
+   \begin{equation}
+             \textbf{P}_{k|k-1} = \textbf{F}_{k-1}\textbf{P}_{k-1}\textbf{F}^T_{k-1} + \textbf{Q}_{k-1}, 
+   \end{equation}
+   
+   where:
+   \begin{itemize}
+       \item $\textbf{P}_{k|k-1}$ is the predicted state error co-variance matrix
+       \item $\textbf{P}_{k-1}$ is the previous estimated state error co-variance matrix
+       \item $\textbf{Q}$ is the process noise co-variance matrix.
+   \end{itemize}\par
+   One the predicted valued are obtained, the Kalman gain matrix, $\textbf{K}_k$ is calculated by the following function:
+   \begin{equation}
+                 \textbf{K}_k = \textbf{P}_{k|k-1} \textbf{H}^T_k(\textbf{H}_k\textbf{P}_{k|k-1} \textbf{H}^T_k + \textbf{R}_k)^{-1},  
+   \end{equation}
+   
+   with $\textbf{R}$ is the measurement noise co-variance.\par
+   The measurement update equations:
+   \begin{itemize}
+       \item The state vector is updated as:
+           \begin{equation}
+                         \hat{\textbf{x}}_k = \hat{\textbf{x}}_{k|k-1} + \textbf{K}_k(\textbf{z}_k - \textbf{H}_x\hat{\textbf{x}}_{k|k-1}), 
+           \end{equation}
+       \item The state error co-variance is updated by
+           \begin{equation}
+                         \textbf{P}_k = (\textbf{I} -  \textbf{K}_k\textbf{H}_k)\textbf{P}_{k|k-1}, 
+           \end{equation}
+   \end{itemize}

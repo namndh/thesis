@@ -1,7 +1,7 @@
-\documentclass[12pt,a4paper,oneside,openright]{book}
+\documentclass[13pt,a4paper,oneside,openright]{book}
 \newcommand*{\PreamblePath}{./Preamble}
 
-\usepackage[a4paper,top=25mm,right=20mm,bottom=25mm,left=35mm]{geometry}
+\usepackage[a4paper,top=20mm,right=20mm,bottom=20mm,left=35mm]{geometry}
 
 \usepackage{amsmath,amssymb, amsthm, pgfplots} % Math packages
 
@@ -45,11 +45,14 @@
 \usepackage{booktabs}
 % \usepackage[usenames, dvipsnames]{color}
 \usepackage{wrapfig} % For positioning figure
-
+\usepackage{lscape}
+\usepackage{hyperref}
 % For subfigures
 \usepackage{subfigure}
 \usepackage{caption}
-
+\usepackage{xcolor}
+\usepackage{multirow}
+\usepackage{rotating}
 \usepackage{times}
 \usepackage{lipsum} % For dummy lorem ipsum texts
 \usepackage{enumitem}
@@ -131,7 +134,7 @@
 \newenvironment{acknowledgement}
 {
 	\cleardoublepage
-	\thispagestyle{empty}
+	\thispagestyle{fancy}
 	\addcontentsline{toc}{chapter}{Acknowledgements}
 	\vspace{-30pt}
 	% \null
@@ -146,7 +149,7 @@
 \newenvironment{abstract}
 {
 	\cleardoublepage
-	\thispagestyle{empty}
+	\thispagestyle{fancy}
 	\addcontentsline{toc}{chapter}{Abstract of Thesis}
 	\vspace{-30pt}
 	% \null
@@ -161,7 +164,7 @@
 \newenvironment{vnabstract}
 {
 	\cleardoublepage
-	\thispagestyle{empty}
+	\thispagestyle{fancy}
 	\selectlanguage{vietnamese} %% Must be presented here, or you will not be able
 							 %% to use Vietnamese in some pages in your thesis
 	\addcontentsline{toc}{chapter}{Tóm Tắt Nội Dung Đồ Án Tốt Nghiệp}

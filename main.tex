@@ -11,13 +11,18 @@
 \include{Fronts/vnabstract}
 \include{Fronts/abstract}
 \include{Fronts/acknowledgement}
-\include{Fronts/acronym}
+% \include{Fronts/acronym}
 \fontsize{13}{16pt}\selectfont
+\newpage
+{\setstretch{1.0} 
+\printglossary[type=\acronymtype]}
 \tableofcontents
 \listoffigures
 \addcontentsline{toc}{chapter}{List of Figures}
 \listoftables
 \addcontentsline{toc}{chapter}{List of Tables}
+
+
 
 \mainmatter
 \include{Chapters/chapter1}
