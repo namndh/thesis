@@ -110,8 +110,8 @@ The efficient recursive functions minimize the mean of the squared error in orde
 \hspace{0.45cm}Object detection is one of the essential tasks in computer vision, the aim of object detection is that localize the instances and classify them in a
 image. With the outburst of deep learning for decades, deep learning based approaches have not only achieved state-of-the-art performance but also
 solved the problem in real time speed. In this section, we would like describe two prominent algorithms in object detections.
-\subsection{Faster Region Convolutional Neural Network}
-\hspace{0.45cm}Faster \acrshort{RCNN} is the third version of Region Convolutional Neural Network (\acrshort{RCNN}) family with some
+\subsection{Faster Region-based Convolutional Neural Network}
+\hspace{0.45cm}Faster \acrshort{RCNN} is the third version of Region-based Convolutional Neural Network (\acrshort{RCNN}) family with some
 improvements to increase the accuracy and the computational time. Instead of selective search to propose object region
 for in two previous version \acrshort{RCNN} and Fast \acrshort{RCNN}, in Faster \acrshort{RCNN}, \cite{FrRCNN} proposed a network called \textit{Region Proposal Network} or \acrshort{RPN}. The comparison of three versions in RCNN
 family is shown in the fig.\ref{fig:rcnn_family}\footnote{https://www.csdn.net/}
@@ -124,7 +124,7 @@ family is shown in the fig.\ref{fig:rcnn_family}\footnote{https://www.csdn.net/}
 \subsubsection{The algorithm}
 \begin{figure}[h!]
     \centering
-    \includegraphics[width=0.5\textwidth]{Chapters/Fig/frrcnn.png}
+    \includegraphics[width=0.7\textwidth]{Chapters/Fig/frrcnn.png}
     \caption{Faster \acrshort{RCNN} workflow diagram}
     \label{fig:frrcnn_workflow}
 \end{figure}\par
@@ -136,7 +136,7 @@ Finally, it is input into a simple detection network, and then do classification
 \subsubsection{The architecture}
 \begin{figure}[h!]
     \centering
-    \includegraphics[width=0.8\textwidth]{Chapters/Fig/FrRCNN_arch.png}
+    \includegraphics[width=0.85\textwidth]{Chapters/Fig/FrRCNN_arch.png}
     \caption{Faster \acrshort{RCNN} architecture}
     \label{fig:frrcnn_arc}
 \end{figure}
@@ -155,7 +155,7 @@ It is a type of pooling layer which performs max pooling on inputs (here, convne
 of non-uniform sizes and produces a small feature map of fixed size (say 7x7)\cite{FrRCNN}. 
 The choice of this fixed size is a network hyper-parameter and is predefined.
 The main purpose of doing such a pooling is to speed up the training and test time and also to train the whole system from end-to-end (in a joint manner)\cite{FrRCNN}.
-\pagebreak
+
 \subsection{YOLOv3}
 \hspace{0.45cm}YOLOv3\cite{yolov3} is the third version of object detection algorithm in YOLO (You Only Look One) family. 
 It increases the accuracy and improves the performance with many modifications than the previous version and is 
@@ -176,7 +176,7 @@ Secondly, if the center point of the bounding box falls in a grid cell, this gri
 The predicted box which has the highest objectness score, and \acrshort{IoU} over the ground truth bounding box of the specfic class object is chosen.
 \begin{figure}[h!]
     \centering
-    \includegraphics[scale=0.5]{Chapters/Fig/yolo_bounding_box.png}
+    \includegraphics[scale=0.6]{Chapters/Fig/yolo_bounding_box.png}
     \caption{Predicted bounding box with dimensions priors and location prediction}
     \label{fig:bounding_box}
 \end{figure}
@@ -214,19 +214,19 @@ Therefore, the author added spatial attention before the \acrshort{GAP} to impro
 as showing in fig.\ref{fig:sa_gap}\cite{SA}, where FCN represents the fully connected layer or \acrshort{FC} layer.\par
  \begin{figure}[h!]
      \centering
-     \includegraphics[scale=0.5]{Chapters/Fig/attention-sa-gap.PNG}
+     \includegraphics[scale=0.6]{Chapters/Fig/attention-sa-gap.PNG}
      \caption{Structure of a common classifier with \acrshort{GAP} is shown on the right, the modification on the left is that a spatial attention layer or \acrshort{SA} layer is inserted before \acrshort{GAP}}
      \label{fig:sa_gap}
  \end{figure}
 The network architecture of parameter-free spatial attention network is shown in fig.\ref{fig:sa_arc}\cite{SA}.\par
 \begin{figure}[h!]
     \centering
-    \includegraphics[width=0.6\textwidth]{Chapters/Fig/attention_network.PNG}
+    \includegraphics[width=\textwidth]{Chapters/Fig/attention_network.PNG}
     \caption{The network architecture}
     \label{fig:sa_arc}
 \end{figure}
 The yellow part is the backbone ResNet-50\cite{He_2016_CVPR}. The red part represents the deep supervision branches, for which the spatial attention layers (the left green part) are added before \acrshort{GAP}. The blue part denotes the part classifiers. Each part classifier produces a loss based on the part-level feature \cite{SA}. Note that the most right spatial attention part is not a part of the main model. It is only used in the ablation study \cite{SA}.\par
-The input for every deeply supervised branch is a feature map $f$. The spatial attention layer first assigns different importance for different locations. The processed feature map is then fed into a \acrshort{GAP} layer followed by a fully-connected layer before computing the cross-entropy loss $l_{si}$\cite{SA}. The losses calculated from three intermediate feature maps will in the end be added to the final loss\cite{SA}.\par
+The input for every deeply supervised branch is a feature map $f$. The spatial attention layer first assigns different importance for different locations. The processed feature map is then fed into a \acrshort{GAP} layer followed by a fully-connected layer before computing the cross-entropy loss $l_{si}$\cite{SA}. Then the total loss is the summation over all deep supervision losses, six part losses and the loss from the backbone\cite{SA}.\par
 During testing, all the deeply supervised branches and
 part classifiers on top are dismissed. The backbone will then
 be used as a feature extractor, which is applied to all the
@@ -241,7 +241,7 @@ based on the Euclidean distance between these features\cite{SA}.
     \caption{Parameter-free Spatial Attention Network Architecture}
     \label{fig:sa}
 \end{figure}
-
+\pagebreak
 \section{Online pedestrian tracking methodologies}
 \hspace{0.45cm} Online tracking-by-detection approaches usually operates the association the
 detection of the current frame with a small number of the previous frames but not all the
@@ -253,7 +253,7 @@ calculated from detections obtained by using ACF detector to address these probl
 only uses the detections for tracking process and does not take the advanced of large-scale person re-identification datasets.
 On the other hand, Wojke et al. \cite{Wojke2017simple} proposed DeepSORT, a method that takes both detections and predictions 
 from trackers with multi-stage matching stages and uses the deep learning-based features to perform online pedestrian tracking.
-In this thesis, we would like to discuss more about DeepSORT\cite{Wojke2017simple} which we determine to examine and propose some architecture alterations to this approach.\par
+In this thesis, we would like to discuss more about DeepSORT\cite{Wojke2017simple} which we examine and then propose some architecture alterations to this approach.\par
 
 DeepSORT or Simple online and realtime tracking with a deep association metric \cite{Wojke2017simple} is 
 the a improvement of Simple online and realtime tracking \cite{sort} . DeepSORT\cite{Wojke2017simple} adapts effective parts from the previous version and integrates appearance information to improve the accuracy of SORT. All the computational complexity is placed 
@@ -287,7 +287,7 @@ remain even if there exists a hypothesis $k$ that is closer distance to ground t
 An identity switch is counted if a ground truth target $i$ is matched to a track $j$ and the last known assignment was $k\neq j$ \cite{Milan2016MOT16AB}.\par
 \begin{figure}[h!]
     \centering
-    \includegraphics[width=0.8\textwidth]{Chapters/Fig/id_switch_mot.png}
+    \includegraphics[width=\textwidth]{Chapters/Fig/id_switch_mot.png}
     \caption{Four cases illustrating tracker-to-target assignments}
     \label{fig:ids_mot}
 \end{figure}

@@ -1,6 +1,6 @@
 \chapter{Introduction}
 \section{Motivation}
-\hspace{0.5cm}Online pedestrians tracking is a process that evaluates the localization multiple pedestrians
+\hspace{0.5cm}Online pedestrians tracking is a process that evaluates the localization of multiple pedestrians
  and provide precise identification for each person during their trajectories over the time without any previous 
  knowledge of the scene space before. Recently, it is one of the most essential tasks of video surveillance, 
  video analysis or self-driving cars. Because of the variety of the applications, 
@@ -9,8 +9,8 @@
  accessories in appearance, 
 the differences in viewpoint, the occlusions or the limitation of \acrshort{FOV} of the cameras.\par
 Numerous methods have been proposed to address these problems of online pedestrian tracking, they are often based on the idea of tracking-by-detection framework which detects pedestrians in the scene space and associate these detections to form trajectories of the pedestrians.\par
-In this work, we first study two tracking-by-detection framework based approaches for online pedestrian tracking using
-multi-stage associations \cite{Wojke2017simple} and \cite{MultiTracking} . After that, we propose two alterations of the
+In this work, we first study a tracking-by-detection framework based approach for online pedestrian tracking using
+multi-stage associations \cite{Wojke2017simple} and related backgrounds. After that, we propose two alterations of the
 tracking method \cite{Wojke2017simple} which can be applied to potentially improve the performance of the system. Then, we
 verify our considerations by set of experiments on common datasets and evaluation metrics that are widely used in
 pedestrian tracking.
@@ -20,7 +20,7 @@ pedestrian tracking.
 \begin{itemize}
     \item We provide a detail explanation of the architecture and algorithms of a real time and online pedestrian tracking method\cite{Wojke2017simple} and its related backgrounds.
     \item We propose two modifications of \cite{Wojke2017simple}'s architectures with the assumption that our modifications can theoretically improve the performance of the \cite{Wojke2017simple}.
-    \item We conduct a set of experiments to evaluate the performance of \cite{Wojke2017simple} and our two proposals on MOT16-train dataset with the MOT metrics. Based on such experiments, we explicitly address the improvements and the limitations of our two proposals when compares with \cite{Wojke2017simple}.
+    \item We conduct a set of experiments to evaluate the performance of \cite{Wojke2017simple} and our two proposals on MOT16 dataset with the MOT metrics\cite{Milan2016MOT16AB}. Based on such experiments, we explicitly address the improvements and the limitations of our two proposals when compares with \cite{Wojke2017simple}.
 \end{itemize}
 \section{Organization}
 The remains of the thesis is organized as follow:
@@ -31,7 +31,7 @@ The remains of the thesis is organized as follow:
   \item \textbf{Chapter 4: Experimental results} describes in details the datasets, the environment of the experiment. 
   Then, provide a comparative results of two proposals and the original model on MOT16-train dataset.
   \item \textbf{Chapter 5: Conclusions and Future work} sums up the thesis with its improvements and limitations, 
-  then discusses the future work develop our two proposals.
+  then discusses the future work to develop our two proposals.
   \item \textbf{Appendix A: Deep learning} gives essential foundation knowledge of deep learning
   \item \textbf{Appendix B: Techniques in Object Detection} describes some common techniques which are usually used in object detection algorithms.
 \end{itemize}

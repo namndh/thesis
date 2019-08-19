@@ -71,7 +71,7 @@ $t^{(1)}$ is default set to 9.4877.\cite{Wojke2017simple}
 \hspace{0.5cm}The Mahalanobis distance provides information about possible object locations based on motion that are particularly useful for short-term predictions. On the other hand, the cosine distance considers appearance information that are particularly useful for recover ids after long-term occlusion.\par
 Two metrics are combined by a weighted sum:
 \begin{equation}
-    c_{i,j} = \lambda d^{(1)}(i,j) + (1-\lambda d^{(2)}(i,j))
+    c_{i,j} = \lambda d^{(1)}(i,j) + (1-\lambda)d^{(2)}(i,j)
 \end{equation}
 
 The association is admissible if it is within the gate regions of both metrics:
@@ -174,7 +174,7 @@ in fig.\ref{fig:sa_matching}.
 
 \begin{figure}[h!]
     \centering
-    \includegraphics[width=0.7\textwidth]{Chapters/Fig/yolov3_acc_com.png}
+    \includegraphics[width=0.8\textwidth]{Chapters/Fig/yolov3_acc_com.png}
     \caption{Accuracy of objects detection algorithms on COCO dataset}
     \label{fig:yolov3_acc_com}
 \end{figure}

@@ -190,7 +190,7 @@ Evaluation measures with ($\uparrow$), higher scores denote better performance, 
         MOT16-10 & 54  & 15  & \textcolor{red}{14}   & 8   & 8                     & 1016 & \textcolor{red}{1025}  &  4590         & \textcolor{red}{4593}   & 69  & \textcolor{blue}{66} & 53.9\% & 53.9\%                    & 0.212 & \textcolor{blue}{0.213}          \\ \hline
         MOT16-11 & 69  & 15  & 15                    & 23  & \textcolor{blue}{22}  & 195  & \textcolor{blue}{189}  &  3135         & \textcolor{blue}{3116}  & 18  & \textcolor{blue}{17} & 63.5\% & \textcolor{blue}{63.8}\%  & 0.134 & 0.134          \\ \hline
         MOT16-13 & 107 & 29  & \textcolor{blue}{30}  & 27  & \textcolor{blue}{26}  & 280  & \textcolor{blue}{178}  &  4589         & \textcolor{blue}{4554}  & 70  & \textcolor{blue}{68} & 56.9\% & \textcolor{blue}{57.2}\%  & 0.212 & 0.212          \\ \hline
-        OVERALL  & 517 & 130 & \textcolor{blue}{133} & 132 & \textcolor{blue}{131} & 7416 & \textcolor{red}{7429}  &  44288        & \textcolor{blue}{44229} & 312 & \textcolor{blue}{288} & 52.9\% & \textcolor{blue}{53.0}\% & 0/173 & \textcolor{red}{0.17}          \\ \hline
+        OVERALL  & 517 & 130 & \textcolor{blue}{133} & 132 & \textcolor{blue}{131} & 7416 & \textcolor{red}{7429}  &  44288        & \textcolor{blue}{44229} & 312 & \textcolor{blue}{288} & 52.9\% & \textcolor{blue}{53.0}\% & 0.173 & \textcolor{red}{0.17}          \\ \hline
     \end{tabular}
     \caption{Results on MOT16 dataset of DeepSORT(I) and SADeepSORT(II) evaluated by \textit{py-motmetrics}. Value with red color is worse while the blue one is better}
     \label{tab:sa_deepsort_result}
@@ -364,7 +364,7 @@ on MOT16 dataset:
 \end{itemize}
 
 \section{Future Work} 
-\hspace{0.45cm} The results in our first experiment of SADeepSORT is so significant better than DeepSORT\cite{Wojke2017simple} and
+\hspace{0.45cm} The results in our first experiment of SADeepSORT is not so significant better than DeepSORT\cite{Wojke2017simple} while
 the speed is slower due to the limitation we mentions in previous section. We want to train the parameter-free spatial attention
 network with different backbone architectures which should be shallower than ResNet-50\cite{He_2016_CVPR} but still remain the competitive results.
 With these experiments, we expect to have a online pedestrian tracking method that achieve real-time constraint and asymptotically state-of-the-art result.\par 
@@ -373,6 +373,6 @@ when compares with Faster \acrshort{RCNN} in \cite{Wojke2017simple}. We want to 
 anchor box to make it robust to the size of person which different poses and then train it on person detection dataset. After that,
 we expect to acquire a more accurate and faster person detector than original YOLOv3\cite{yolov3} and Faster \acrshort{RCNN} in \cite{Wojke2017simple}.\par 
 Then we are going the determine a mapping of the detection results of different detector to the annotated detections to make
-MOT metrics\cite{Milan2016MOT16AB} to be more reliable.\par
+MOT metrics\cite{Milan2016MOT16AB} to be more reliable to allow us to attend in the upcoming challenges of MOT challenge\footnote{https://motchallenge.net}.\par
 Finally, we aim to implement the tracking algorithm in a more power programming language like C/C++ to maximize the speed and apply the algorithm
 on surveillance system in a restaurants, stores or offices.
